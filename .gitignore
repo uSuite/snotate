@@ -16,3 +16,7 @@ scratch/
 
 # the session log and phase plan are local, not published
 docs/local/
+
+# scommon resolves to ../scommon beside this repository or to GitHub;
+# the pin only exists in the second case, so it is not shared
+Package.resolved
