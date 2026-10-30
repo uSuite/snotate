@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- The shared s of the family: two joined arcs of equal stroke, round caps;
+       heavy and slightly condensed so it reads at 16 px. -->
+  <path d="M 627 355 A 140 100 0 1 0 512 512 A 140 100 0 1 1 397 669"
+        fill="none" stroke="#ffffff" stroke-width="124" stroke-linecap="round"/>
+</svg>

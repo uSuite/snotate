@@ -1,0 +1,95 @@
+{
+  "steps": [
+    {
+      "excluded": false,
+      "file": "poc-sample-vm-migrate-00.png",
+      "items": [
+        {
+          "at": [392, 726],
+          "preset": 1,
+          "type": "counter"
+        },
+        {
+          "at": [652, 726],
+          "preset": 1,
+          "type": "counter"
+        },
+        {
+          "from": [1000, 600],
+          "preset": 2,
+          "to": [762, 720],
+          "type": "arrow"
+        }
+      ],
+      "size": [1600, 1000]
+    },
+    {
+      "excluded": false,
+      "file": "poc-sample-vm-migrate-01.png",
+      "items": [],
+      "size": [1600, 1000]
+    },
+    {
+      "crop": [320, 140, 1220, 740],
+      "excluded": false,
+      "file": "poc-sample-vm-migrate-02.png",
+      "items": [
+        {
+          "preset": 2,
+          "rect": [900, 714, 244, 88],
+          "type": "rectangle"
+        },
+        {
+          "at": [912, 726],
+          "preset": 1,
+          "type": "counter"
+        }
+      ],
+      "size": [1600, 1000]
+    },
+    {
+      "excluded": false,
+      "file": "poc-sample-vm-migrate-03.png",
+      "items": [],
+      "size": [1600, 1000]
+    },
+    {
+      "excluded": false,
+      "file": "poc-sample-vm-migrate-04.png",
+      "items": [
+        {
+          "at": [1200, 600],
+          "preset": 1,
+          "type": "counter"
+        },
+        {
+          "at": [1000, 480],
+          "leader": [762, 726],
+          "pill": true,
+          "preset": 1,
+          "text": "Migration running",
+          "type": "text"
+        },
+        {
+          "preset": 1,
+          "rect": [300, 12, 150, 40],
+          "type": "blur"
+        }
+      ],
+      "size": [1600, 1000]
+    },
+    {
+      "excluded": true,
+      "file": "poc-sample-vm-migrate-05.png",
+      "items": [
+        {
+          "at": [392, 726],
+          "preset": 1,
+          "type": "counter"
+        }
+      ],
+      "size": [1600, 1000]
+    }
+  ],
+  "version": 1
+}

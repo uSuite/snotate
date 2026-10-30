@@ -1,0 +1,38 @@
+#!/bin/sh
+# Command-line launcher (SN-602): open case folders or captures in sNotate.
+# `snotate -` reads one path per line from stdin, for example
+# `ls -d poc-*/ | snotate -`; `snotate --export <case or poc-root>...`
+# exports headless without a window. The app is $SNOTATE_APP, else the
+# bundle this script ships in, else this repository's build, else
+# /Applications.
+set -eu
+here=$(cd "$(dirname "$(realpath "$0")")" && pwd)
+app=${SNOTATE_APP:-}
+if [ -z "$app" ]; then
+    for candidate in "$here/../.." "$here/../build/sNotate.app" /Applications/sNotate.app "$HOME/Applications/sNotate.app"; do
+        if [ -x "$candidate/Contents/MacOS/sNotate" ]; then
+            app=$(cd "$candidate" && pwd)
+            break
+        fi
+    done
+fi
+if [ -z "$app" ] || [ ! -x "$app/Contents/MacOS/sNotate" ]; then
+    echo "snotate: no sNotate.app found${app:+ at $app}; build one with make app or set SNOTATE_APP" >&2
+    exit 1
+fi
+# open -a takes a bundle path only when it is absolute.
+app=$(cd "$app" && pwd)
+if [ "${1:-}" = "--export" ]; then
+    exec "$app/Contents/MacOS/sNotate" "$@"
+fi
+if [ "$#" -eq 0 ]; then
+    exec open -a "$app"
+fi
+if [ "$1" = "-" ]; then
+    set --
+    while IFS= read -r path; do
+        [ -n "$path" ] && set -- "$@" "$path"
+    done
+    [ "$#" -gt 0 ] || exit 0
+fi
+exec open -a "$app" "$@"

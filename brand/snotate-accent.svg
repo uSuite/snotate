@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- sNotate: the step counter, a filled dot with a white 1, bottom right of
+       the s; an amber ring keeps it apart from the stroke it overlaps. The
+       dot is preset 1's counter blue, the 1 a path, so no font is needed. -->
+  <circle cx="700" cy="700" r="126" fill="#00579c" stroke="#e98a0b" stroke-width="28"/>
+  <path d="M 668 650 L 708 622 V 778" fill="none" stroke="#ffffff" stroke-width="34"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,16 @@
+cask "snotate" do
+  version "@VERSION@"
+  sha256 "@SHA256@"
+
+  url "https://github.com/@REPOSITORY@/releases/download/v#{version}/sNotate-#{version}.zip"
+  name "sNotate"
+  desc "Keyboard-first image notation for PoC evidence folders"
+  homepage "https://github.com/@REPOSITORY@"
+
+  depends_on macos: ">= :tahoe"
+
+  app "sNotate.app"
+  binary "#{appdir}/sNotate.app/Contents/Resources/snotate"
+
+  zap trash: "~/.config/snotate"
+end

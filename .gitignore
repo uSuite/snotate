@@ -1,0 +1,18 @@
+# macos stuff
+.DS_Store
+
+
+# swift and xcode
+.build/
+.swiftpm/
+build/
+DerivedData/
+sNotate.xcodeproj/
+xcuserdata/
+*.xcuserstate
+
+# scratch PoCs are throwaway
+scratch/
+
+# the session log and phase plan are local, not published
+docs/local/

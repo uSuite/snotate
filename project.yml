@@ -1,0 +1,41 @@
+name: sNotate
+options:
+  bundleIdPrefix: io.github.usuite
+  deploymentTarget:
+    macOS: "26.0"
+  createIntermediateGroups: true
+packages:
+  sNotate:
+    path: .
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  sNotate:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/sNotate
+      - path: scripts/snotate
+        buildPhase: resources
+      - path: Resources/AppIcon.icns
+        buildPhase: resources
+    dependencies:
+      - package: sNotate
+        product: SNotateCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.usuite.snotate
+        PRODUCT_NAME: sNotate
+        INFOPLIST_FILE: Resources/Info.plist
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        COMBINE_HIDPI_IMAGES: YES
+schemes:
+  sNotate:
+    build:
+      targets:
+        sNotate: all
