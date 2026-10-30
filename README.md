@@ -58,7 +58,20 @@ Press `?` in a window for your live keymap, and every command is in the menu bar
 
 ## Install
 
-Requires macOS 26 or newer. No release is published yet, so build it with Xcode 26 and XcodeGen (`brew install xcodegen`): `make app` writes `build/sNotate.app`, and `make install` links the `snotate` command into `~/.local/bin`. SwiftPM fetches scommon from GitHub on the first build, or uses a `../scommon` checkout beside this one. Release zips are signed ad hoc until there is a Developer ID, so macOS blocks the first open; allow it under System Settings, Privacy and Security.
+Requires macOS 26 or newer, on Apple silicon or Intel. Download `sNotate-<version>.zip` from the [latest release](https://github.com/uSuite/snotate/releases/latest), open it, and move `sNotate.app` to Applications. For the `snotate` command, link the launcher inside the app: `mkdir -p ~/.local/bin && ln -sf /Applications/sNotate.app/Contents/Resources/snotate ~/.local/bin/snotate`.
+
+### The first open: sNotate Not Opened
+
+The release is signed ad hoc, not with a paid Apple Developer ID, so Apple has not notarised it. The first time you open a downloaded copy, macOS stops it with "Apple could not verify sNotate is free of malware" (the dialog quotes the app name). Choose Done, then allow it once, either way:
+
+- System Settings > Privacy & Security, scroll down to Security, and next to the line saying sNotate was blocked to protect your Mac, choose Open Anyway, confirm with your password or Touch ID, then Open. The button shows for about an hour after the blocked attempt.
+- Or in Terminal, remove the download flag macOS checks: `xattr -dr com.apple.quarantine /Applications/sNotate.app`
+
+From then on that copy opens like any app; each new version you download asks once more. Control-click > Open no longer skips the check on recent macOS. Only downloaded copies are checked: a copy you build yourself never carries the download flag, so it opens at once. If you would rather not run a binary you did not build, build it from source as below.
+
+### Build from source
+
+With Xcode 26 or newer and XcodeGen (`brew install xcodegen`): `make app` writes `build/sNotate.app`, and `make install` links the `snotate` command into `~/.local/bin`. SwiftPM fetches scommon from GitHub on the first build, or uses a `../scommon` checkout beside this one.
 
 `snotate <case-folder or capture>...` opens cases, `ls -d poc-*/ | snotate -` reads them from stdin, and `snotate --export <case or poc-root>` exports without a window.
 
