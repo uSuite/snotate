@@ -75,6 +75,16 @@ With Xcode 26 or newer and XcodeGen (`brew install xcodegen`): `make app` writes
 
 `snotate <case-folder or capture>...` opens cases, `ls -d poc-*/ | snotate -` reads them from stdin, and `snotate --export <case or poc-root>` exports without a window.
 
+## What it reads and writes
+
+sNotate reads the case folder you open and nothing else. It has no network code: nothing is collected, sent or uploaded, and it asks for no permissions.
+
+- `~/.config/snotate/` (or `$XDG_CONFIG_HOME/snotate/`), created on first launch: `config`, `keymap` and `styles`, plain text you can edit.
+- In the case folder you open: the sidecar `<case-id>.snotate.json` (annotations), one caption line at a time in the memo `<case-id>.md`, and an export into `notated/`. Captures you drop or paste are saved as new files there; the rename plan renames files only after you confirm it; `dd` moves a capture to the Trash. The captures themselves are never rewritten.
+- Export Config in Settings writes a zip of `config`, `keymap` and `styles` where you choose in a Save panel; `:export-config` writes it to the path you give, or to the Desktop when you give none, and macOS may ask once for the Desktop.
+
+This release is not sandboxed yet, which is why macOS does not ask before sNotate writes `~/.config/snotate/`. The next minor version moves sNotate into the App Sandbox: it will ask once for each case folder you open, and its own files will live in its container, with your current ones moved there on first launch.
+
 ## Development
 
 macOS 26 and Xcode 26 (Swift 6.2). `make test` runs the core tests, `make app` builds the app, `make smoke` drives it through scripted runs with snapshots in `build/smoke/`, `make hostile` opens hostile fixtures, `make bench` and `make idle` check the performance targets, `make golden` regenerates the rendering goldens, `make cheatsheet` writes docs/keys.md, and `make release` builds a universal app and zip. The design lives in [docs/02-tech-stack.md](docs/02-tech-stack.md), the decisions in [docs/DECISIONS.md](docs/DECISIONS.md) and the work items in [docs/01-backlog.md](docs/01-backlog.md).
